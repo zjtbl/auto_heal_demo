@@ -1,0 +1,74 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python (ai-test-agent-system)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python virtual environments
+ai-test-agent-system/venv/
+ai-test-agent-system/ENV/
+ai-test-agent-system/env/
+ai-test-agent-system/.venv
+ai-test-agent-system/.virtenv/
+
+# Frontend (testing-deep-agents-ui)
+testing-deep-agents-ui/node_modules/
+testing-deep-agents-ui/.next/
+testing-deep-agents-ui/out/
+testing-deep-agents-ui/build/
+testing-deep-agents-ui/dist/
+testing-deep-agents-ui/.turbo/
+testing-deep-agents-ui/.vercel
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Output directories
+ai-test-agent-system/src/workspace/web-output/
+ai-test-agent-system/src/workspace/api-output/
+ai-test-agent-system/src/workspace/testcase-output/
+*.log
+
+# TypeScript
+testing-deep-agents-ui/*.tsbuildinfo
+testing-deep-agents-ui/next-env.d.ts
+
+# Lock files (optional - comment out if you want to commit them)
+# ai-test-agent-system/uv.lock
+# testing-deep-agents-ui/package-lock.json
+# testing-deep-agents-ui/yarn.lock
+
+# LangGraph API
+.langgraph_api/
