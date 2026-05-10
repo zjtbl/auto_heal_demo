@@ -19,9 +19,13 @@ from deepagents.backends import CompositeBackend, FilesystemBackend, LocalShellB
 # =============================================================================
 # Workspace & Artifact Directories
 # =============================================================================
-workspace_dir = Path(
-    r"C:\Users\65132\Desktop\workspace\testing\ai-test-agent-system\src\workspace"
-).resolve()
+# 动态计算 workspace 目录：优先使用环境变量，否则使用项目相对路径
+_workspace_env = os.environ.get("WEB_AGENT_WORKSPACE")
+if _workspace_env:
+    workspace_dir = Path(_workspace_env).resolve()
+else:
+    # 相对于当前文件向上定位到 ai-test-agent-system/src/workspace
+    workspace_dir = Path(__file__).resolve().parent.parent.parent.parent / "src" / "workspace"
 output_root = workspace_dir / "web-output"
 output_root.mkdir(parents=True, exist_ok=True)
 
@@ -155,7 +159,8 @@ def create_backends() -> tuple[LocalShellBackend, FilesystemBackend, CompositeBa
         virtual_mode=False,
         inherit_env=True,
         env={
-            "PATH": r"C:\Program Files\nodejs;C:\Users\65132\AppData\Roaming\npm;C:\Windows\System32;C:\Windows",
+            # 动态继承当前系统 PATH，确保 node/npm/playwright 等工具可用
+            "PATH": os.environ.get("PATH", ""),
         },
         timeout=180,
     )
